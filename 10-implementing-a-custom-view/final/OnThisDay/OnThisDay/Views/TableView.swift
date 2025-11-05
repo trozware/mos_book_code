@@ -1,7 +1,7 @@
 //
 // TableView.swift
-// macOS by Tutorials
-// Version 3.0
+// macOS Apps Step by Step
+// Version 4.0
 //
 // by Sarah Reichelt
 //
@@ -55,6 +55,8 @@ struct TableView: View {
     }
   }
 }
+
+extension KeyPath: @unchecked @retroactive Sendable {}
 
 #Preview {
   TableView(tableData: [Event.sampleEvent])

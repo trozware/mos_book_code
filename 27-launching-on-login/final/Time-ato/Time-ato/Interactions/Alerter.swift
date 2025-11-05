@@ -1,7 +1,7 @@
 //
 // Alerter.swift
-// macOS by Tutorials
-// Version 3.0
+// macOS Apps Step by Step
+// Version 4.0
 //
 // by Sarah Reichelt
 //
@@ -50,7 +50,8 @@ struct Alerter {
 
   @discardableResult
   func openAlert(title: String, message: String, buttonTitles: [String] = [])
-    -> NSApplication.ModalResponse {
+    -> NSApplication.ModalResponse
+  {
     let alert = NSAlert()
     alert.messageText = title
     alert.informativeText = message
@@ -62,7 +63,6 @@ struct Alerter {
     if let appDel = NSApp.delegate as? AppDelegate {
       appDel.closeMenu()
     }
-
     NSApp.activate()
 
     let response = alert.runModal()

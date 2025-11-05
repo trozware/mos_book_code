@@ -1,7 +1,7 @@
 //
 // OnThisDayApp.swift
-// macOS by Tutorials
-// Version 3.0
+// macOS Apps Step by Step
+// Version 4.0
 //
 // by Sarah Reichelt
 //
@@ -11,6 +11,7 @@ import SwiftUI
 @main
 struct OnThisDayApp: App {
   @AppStorage("displayMode") var displayMode = DisplayMode.auto
+
   @State var appState = AppState()
 
   var body: some Scene {

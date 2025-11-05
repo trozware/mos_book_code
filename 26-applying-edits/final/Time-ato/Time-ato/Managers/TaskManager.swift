@@ -1,7 +1,7 @@
 //
 // TaskManager.swift
-// macOS by Tutorials
-// Version 3.0
+// macOS Apps Step by Step
+// Version 4.0
 //
 // by Sarah Reichelt
 //
@@ -13,8 +13,10 @@ class TaskManager {
   var tasks: [Task]
   var timerCancellable: AnyCancellable?
   var timerState = TimerState.waiting
+
   let interaction = Alerter()
   // let interaction = Notifier()
+
   let dataStore = DataStore()
   var refreshNeededSub: AnyCancellable?
 
@@ -31,9 +33,7 @@ class TaskManager {
     startTimer()
 
     refreshNeededSub = NotificationCenter.default
-      .publisher(
-        for: .dataRefreshNeeded
-      )
+      .publisher(for: .dataRefreshNeeded)
       .sink { _ in
         self.tasks = self.dataStore.readTasks()
       }
@@ -70,7 +70,6 @@ class TaskManager {
       tasks[nextTaskIndex].start()
       timerState = .runningTask(taskIndex: nextTaskIndex)
     }
-
     dataStore.save(tasks: tasks)
   }
 
@@ -81,7 +80,6 @@ class TaskManager {
     if taskIndex < tasks.count - 1 {
       startBreak(after: taskIndex)
     }
-
     dataStore.save(tasks: tasks)
   }
 
@@ -108,12 +106,14 @@ class TaskManager {
       appDelegate.updateMenu(
         title: title,
         icon: icon,
-        taskIsRunning: taskIsRunning)
+        taskIsRunning: taskIsRunning
+      )
     }
   }
 
   func checkForTaskFinish(activeTaskIndex: Int) {
     let activeTask = tasks[activeTaskIndex]
+
     if activeTask.progressPercent >= 100 {
       if activeTaskIndex == tasks.count - 1 {
         interaction.allTasksComplete()

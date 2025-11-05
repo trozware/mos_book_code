@@ -1,7 +1,7 @@
 //
 // EditButtonsView.swift
-// macOS by Tutorials
-// Version 3.0
+// macOS Apps Step by Step
+// Version 4.0
 //
 // by Sarah Reichelt
 //
@@ -31,7 +31,7 @@ struct EditButtonsView: View {
         saveTasks()
       }
     }
-    .padding(12)
+    .padding()
   }
 
   func closeWindow() {

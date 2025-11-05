@@ -1,7 +1,7 @@
 //
 // ContentView.swift
-// macOS by Tutorials
-// Version 3.0
+// macOS Apps Step by Step
+// Version 4.0
 //
 // by Sarah Reichelt
 //
@@ -9,16 +9,17 @@
 import SwiftUI
 
 struct ContentView: View {
-  @AppStorage("editorFontSize") var editorFontSize: Double = 14
   @Binding var document: MarkWriterDocument
   @State private var previewState = PreviewState.web
+
+  @AppStorage("editorFontSize") var editorFontSize: Double = 14
 
   var body: some View {
     HSplitView {
       TextEditor(text: $document.text)
         .frame(minWidth: 200)
       if previewState == .web {
-        WebView(html: document.html)
+        HTMLView(html: document.html)
           .frame(minWidth: 200)
       } else if previewState == .code {
         ScrollView {

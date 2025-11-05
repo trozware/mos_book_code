@@ -1,7 +1,7 @@
 //
 // ContentView.swift
-// macOS by Tutorials
-// Version 3.0
+// macOS Apps Step by Step
+// Version 4.0
 //
 // by Sarah Reichelt
 //
@@ -25,15 +25,12 @@ struct ContentView: View {
   }
 
   var body: some View {
-    NavigationSplitView(
-      sidebar: {
-        SidebarView(selection: $eventType)
-      },
-      detail: {
-        GridView(gridData: events)
-      }
-    )
-    .frame(minWidth: 750, minHeight: 450)
+    HSplitView {
+      SidebarView(selection: $eventType)
+
+      GridView(gridData: events)
+    }
+    .frame(minWidth: 800, minHeight: 450)
     .navigationTitle(windowTitle)
   }
 }

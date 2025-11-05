@@ -1,7 +1,7 @@
 //
 // DayPicker.swift
-// macOS by Tutorials
-// Version 3.0
+// macOS Apps Step by Step
+// Version 4.0
 //
 // by Sarah Reichelt
 //
@@ -10,6 +10,7 @@ import SwiftUI
 
 struct DayPicker: View {
   @Environment(AppState.self) var appState: AppState
+
   @SceneStorage("selectedDate") var selectedDate: String?
 
   @State private var month = "January"
@@ -28,8 +29,6 @@ struct DayPicker: View {
 
   var body: some View {
     VStack {
-      Text("Select a Date")
-
       HStack {
         Picker("Month", selection: $month) {
           ForEach(appState.englishMonthNames, id: \.self) {
@@ -38,7 +37,7 @@ struct DayPicker: View {
         }
 
         Picker("Day", selection: $day) {
-          ForEach(1 ... maxDays, id: \.self) {
+          ForEach(1...maxDays, id: \.self) {
             Text("\($0)")
           }
         }

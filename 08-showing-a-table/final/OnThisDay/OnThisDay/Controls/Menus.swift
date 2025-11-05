@@ -1,7 +1,7 @@
 //
 // Menus.swift
-// macOS by Tutorials
-// Version 3.0
+// macOS Apps Step by Step
+// Version 4.0
 //
 // by Sarah Reichelt
 //
@@ -13,12 +13,11 @@ struct Menus: Commands {
   @AppStorage("displayMode") var displayMode = DisplayMode.auto
 
   var body: some Commands {
-    SidebarCommands()
     ToolbarCommands()
     InspectorCommands()
 
     CommandGroup(before: .help) {
-      Button("ZenQuotes.io web site") {
+      Button("ZenQuotes.io web site", systemImage: "quote.opening") {
         showAPIWebSite()
       }
       .keyboardShortcut("/", modifiers: .command)
@@ -26,6 +25,7 @@ struct Menus: Commands {
 
     CommandMenu("Display") {
       Toggle(isOn: $showTotals) {
+        Image(systemName: "number.circle")
         Text("Show Totals")
       }
       .keyboardShortcut("t", modifiers: .command)
@@ -33,13 +33,13 @@ struct Menus: Commands {
       Divider()
 
       Picker("Appearance", selection: $displayMode) {
-        Text(DisplayMode.light.rawValue)
+        Label(DisplayMode.light.rawValue, systemImage: "sun.max")
           .tag(DisplayMode.light)
           .keyboardShortcut("L", modifiers: .command)
-        Text(DisplayMode.dark.rawValue)
+        Label(DisplayMode.dark.rawValue, systemImage: "sun.max.fill")
           .tag(DisplayMode.dark)
           .keyboardShortcut("D", modifiers: .command)
-        Text(DisplayMode.auto.rawValue)
+        Label(DisplayMode.auto.rawValue, systemImage: "person")
           .tag(DisplayMode.auto)
           .keyboardShortcut("U", modifiers: .command)
       }

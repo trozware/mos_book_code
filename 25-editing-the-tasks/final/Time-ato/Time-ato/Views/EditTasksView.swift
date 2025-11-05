@@ -1,7 +1,7 @@
 //
 // EditTasksView.swift
-// macOS by Tutorials
-// Version 3.0
+// macOS Apps Step by Step
+// Version 4.0
 //
 // by Sarah Reichelt
 //
@@ -44,7 +44,7 @@ struct EditTasksView: View {
 
       EditButtonsView(tasks: $tasks, dataStore: dataStore)
     }
-    .frame(minWidth: 400, minHeight: 430)
+    .frame(minWidth: 400, minHeight: 450)
     .onAppear {
       getTaskList()
     }
@@ -75,5 +75,5 @@ struct EditTasksView: View {
 
 #Preview {
   EditTasksView()
-    .frame(width: 400, height: 430)
+    .frame(width: 400, height: 450)
 }

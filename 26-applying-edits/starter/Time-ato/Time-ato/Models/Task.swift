@@ -1,7 +1,7 @@
 //
 // Task.swift
-// macOS by Tutorials
-// Version 3.0
+// macOS Apps Step by Step
+// Version 4.0
 //
 // by Sarah Reichelt
 //
@@ -54,7 +54,7 @@ extension Task {
     Task(id: UUID(), title: "Project ABC - Ticket 42c"),
     Task(id: UUID(), title: "Testing"),
     Task(id: UUID(), title: "Documentation"),
-    Task(id: UUID(), title: "Project ABC - Ticket 123")
+    Task(id: UUID(), title: "Project ABC - Ticket 123"),
   ]
 
   static var sampleTasksWithStatus: [Task] = [
@@ -80,6 +80,6 @@ extension Task {
     Task(id: UUID(), title: "Project ABC - Ticket 42c"),
     Task(id: UUID(), title: "Testing"),
     Task(id: UUID(), title: "Documentation"),
-    Task(id: UUID(), title: "Project ABC - Ticket 123")
+    Task(id: UUID(), title: "Project ABC - Ticket 123"),
   ]
 }

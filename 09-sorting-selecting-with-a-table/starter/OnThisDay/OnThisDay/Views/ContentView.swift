@@ -1,7 +1,7 @@
 //
 // ContentView.swift
-// macOS by Tutorials
-// Version 3.0
+// macOS Apps Step by Step
+// Version 4.0
 //
 // by Sarah Reichelt
 //
@@ -27,22 +27,18 @@ struct ContentView: View {
   }
 
   var body: some View {
-    NavigationSplitView(
-      sidebar: {
-        SidebarView(selection: $eventType)
-      },
-      detail: {
-        if viewMode == .table {
-          TableView(tableData: events)
-        } else {
-          GridView(gridData: events)
-        }
+    HSplitView {
+      SidebarView(selection: $eventType)
+
+      if viewMode == .table {
+        TableView(tableData: events)
+      } else {
+        GridView(gridData: events)
       }
-    )
-    .frame(minWidth: 750, minHeight: 450)
+    }
+    .frame(minWidth: 800, minHeight: 450)
     .navigationTitle(windowTitle)
-    // .toolbar(id: "mainToolbar") {    // put the `id` back once the crashing bug is fixed
-    .toolbar {
+    .toolbar(id: "mainToolbar") {
       Toolbar(viewMode: $viewMode)
     }
     .searchable(text: $searchText)
@@ -54,11 +50,11 @@ struct ContentView: View {
   }
 }
 
-//  #Preview {
-//    ContentView()
-//  }
-
 enum ViewMode: Int {
   case grid
   case table
 }
+
+//  #Preview {
+//    ContentView()
+//  }

@@ -1,7 +1,7 @@
 //
 // MenuCommands.swift
-// macOS by Tutorials
-// Version 3.0
+// macOS Apps Step by Step
+// Version 4.0
 //
 // by Sarah Reichelt
 //
@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct MenuCommands: Commands {
-  @AppStorage("styleSheet") var styleSheet: StyleSheet = .github
+  @AppStorage("styleSheet") var styleSheet: StyleSheet = .default
   @AppStorage("editorFontSize") var editorFontSize: Double = 14
 
   var body: some Commands {
@@ -18,7 +18,11 @@ struct MenuCommands: Commands {
         Button {
           styleSheet = style
         } label: {
-          Text(style == styleSheet ? "✔︎ \(style.rawValue)" : style.rawValue)
+          if style == styleSheet {
+            Label(style.rawValue, systemImage: "checkmark")
+          } else {
+            Text(style.rawValue)
+          }
         }
         .keyboardShortcut(KeyEquivalent(style.rawValue.first!))
       }
@@ -48,9 +52,8 @@ struct MenuCommands: Commands {
     CommandGroup(replacing: .help) {
       NavigationLink(
         destination:
-          WebView(
-            html: nil,
-            address: "https://tinyurl.com/markdown-cheatsheet"
+          HTMLView(
+            address: "https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet"
           )
           .frame(minWidth: 600, minHeight: 600)
       ) {

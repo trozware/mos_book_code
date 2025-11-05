@@ -1,7 +1,7 @@
 //
 // AppDelegate.swift
-// macOS by Tutorials
-// Version 3.0
+// macOS Apps Step by Step
+// Version 4.0
 //
 // by Sarah Reichelt
 //
@@ -13,9 +13,8 @@ import ServiceManagement
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
   var statusItem: NSStatusItem?
-  var menuManager: MenuManager?
-
   @IBOutlet weak var statusMenu: NSMenu!
+  var menuManager: MenuManager?
   @IBOutlet weak var startStopMenuItem: NSMenuItem!
   @IBOutlet weak var launchOnLoginMenuItem: NSMenuItem!
 
@@ -61,6 +60,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     let window = NSWindow(contentViewController: hostingController)
     window.title = "Edit Tasks"
+
     let controller = NSWindowController(window: window)
 
     NSApp.activate()

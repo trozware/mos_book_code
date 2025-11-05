@@ -1,7 +1,7 @@
 //
 // OnThisDay.playground
-// macOS by Tutorials
-// Version 3.0
+// macOS Apps Step by Step
+// Version 4.0
 //
 // by Sarah Reichelt
 //
@@ -9,10 +9,10 @@
 import Cocoa
 
 let appState = AppState()
-let monthNum = 2
-let dayNum = 29
+let monthNum = 8
+let dayNum = 22
 
-func testData() {
+@MainActor func testData() {
   if let day = appState.getDataFor(month: monthNum, day: dayNum) {
     print(day.displayDate)
     print("\(day.deaths.count) deaths")
@@ -28,7 +28,7 @@ extension String {
       data: Data(utf8),
       options: [
         .documentType: NSAttributedString.DocumentType.html,
-        .characterEncoding: String.Encoding.utf8.rawValue
+        .characterEncoding: String.Encoding.utf8.rawValue,
       ],
       documentAttributes: nil)
 
@@ -80,11 +80,6 @@ func getDataForDay(month: Int, day: Int) async throws -> Day {
 //  if let data = readSampleData() {
 //    do {
 //      let day = try JSONDecoder().decode(Day.self, from: data)
-//      //  print(day.displayDate)
-//      //  print(day.births.count)
-//      //  print(day.births[0].text)
-//      //  print(day.births[0].year)
-//
 //      appState.days[day.displayDate] = day
 //      testData()
 //    } catch {
@@ -128,7 +123,6 @@ struct Event: Decodable, Identifiable {
 
   init(from decoder: Decoder) throws {
     let values = try decoder.container(keyedBy: CodingKeys.self)
-
     let rawText = try values.decode(String.self, forKey: .text)
     let textParts = rawText.components(separatedBy: " &#8211; ")
     if textParts.count == 2 {
@@ -148,8 +142,11 @@ struct Event: Decodable, Identifiable {
     for (_, link) in allLinks {
       if let title = link["2"],
         let address = link["1"],
-        let url = URL(string: address) {
-        processedLinks.append(EventLink(id: UUID(), title: title, url: url))
+        let url = URL(string: address)
+      {
+        processedLinks.append(
+          EventLink(id: UUID(), title: title, url: url)
+        )
       }
     }
     links = processedLinks

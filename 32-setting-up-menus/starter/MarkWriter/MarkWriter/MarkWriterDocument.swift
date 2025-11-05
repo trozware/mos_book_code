@@ -1,7 +1,7 @@
 //
 // MarkWriterDocument.swift
-// macOS by Tutorials
-// Version 3.0
+// macOS Apps Step by Step
+// Version 4.0
 //
 // by Sarah Reichelt
 //
@@ -10,13 +10,7 @@ import SwiftUI
 import UniformTypeIdentifiers
 import MarkdownKit
 
-extension UTType {
-  static var markdownText: UTType {
-    UTType(importedAs: "net.daringfireball.markdown")
-  }
-}
-
-struct MarkWriterDocument: FileDocument {
+nonisolated struct MarkWriterDocument: FileDocument {
   var text: String
 
   var html: String {
@@ -28,7 +22,9 @@ struct MarkWriterDocument: FileDocument {
     self.text = text
   }
 
-  static var readableContentTypes: [UTType] { [.markdownText] }
+  static let readableContentTypes = [
+    UTType(importedAs: "net.daringfireball.markdown")
+  ]
 
   init(configuration: ReadConfiguration) throws {
     guard let data = configuration.file.regularFileContents,

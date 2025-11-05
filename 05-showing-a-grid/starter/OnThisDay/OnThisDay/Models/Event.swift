@@ -1,7 +1,7 @@
 //
 // Event.swift
-// macOS by Tutorials
-// Version 3.0
+// macOS Apps Step by Step
+// Version 4.0
 //
 // by Sarah Reichelt
 //
@@ -46,7 +46,8 @@ struct Event: Decodable, Identifiable {
     for (_, link) in allLinks {
       if let title = link["2"],
         let address = link["1"],
-        let url = URL(string: address) {
+        let url = URL(string: address)
+      {
         processedLinks.append(EventLink(id: UUID(), title: title, url: url))
       }
     }

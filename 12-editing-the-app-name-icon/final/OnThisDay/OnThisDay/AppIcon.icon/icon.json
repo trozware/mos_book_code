@@ -1,0 +1,52 @@
+{
+  "fill" : {
+    "automatic-gradient" : "srgb:0.58082,0.08843,0.31864,1.00000"
+  },
+  "groups" : [
+    {
+      "layers" : [
+        {
+          "fill" : {
+            "automatic-gradient" : "srgb:1.00000,1.00000,1.00000,1.00000"
+          },
+          "image-name" : "rewind.svg",
+          "name" : "rewind",
+          "position" : {
+            "scale" : 4,
+            "translation-in-points" : [
+              7.0546875,
+              121.3984375
+            ]
+          }
+        },
+        {
+          "fill" : {
+            "automatic-gradient" : "srgb:1.00000,1.00000,1.00000,1.00000"
+          },
+          "image-name" : "calendar.svg",
+          "name" : "calendar",
+          "position" : {
+            "scale" : 6,
+            "translation-in-points" : [
+              0,
+              0
+            ]
+          }
+        }
+      ],
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.5
+      }
+    }
+  ],
+  "supported-platforms" : {
+    "squares" : [
+      "macOS"
+    ]
+  }
+}

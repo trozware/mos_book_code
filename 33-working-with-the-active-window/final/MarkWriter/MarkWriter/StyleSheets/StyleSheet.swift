@@ -1,7 +1,7 @@
 //
 // StyleSheet.swift
-// macOS by Tutorials
-// Version 3.0
+// macOS Apps Step by Step
+// Version 4.0
 //
 // by Sarah Reichelt
 //
@@ -9,8 +9,8 @@
 import SwiftUI
 
 enum StyleSheet: String, CaseIterable {
+  case `default` = "Default"
   case github = "GitHub"
   case lopash = "Lopash"
-  case darksolarized = "Dark Solarized"
   case ulysses = "Ulysses"
 }

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSServices</key>
+	<array>
+		<dict>
+			<key>NSMenuItem</key>
+			<dict>
+				<key>default</key>
+				<string>Open in ImageSipper</string>
+			</dict>
+			<key>NSMessage</key>
+			<string>openFromService</string>
+			<key>NSPortName</key>
+			<string>ImageSipper</string>
+			<key>NSRequiredContext</key>
+			<dict>
+				<key>NSTextContext</key>
+				<string>FilePath</string>
+			</dict>
+			<key>NSSendFileTypes</key>
+			<array>
+				<string>public.folder</string>
+				<string>public.image</string>
+			</array>
+			<key>NSSendTypes</key>
+			<array>
+				<string>string</string>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>

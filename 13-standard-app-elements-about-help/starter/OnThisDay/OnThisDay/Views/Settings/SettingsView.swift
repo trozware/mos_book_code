@@ -1,7 +1,7 @@
 //
 // SettingsView.swift
-// macOS by Tutorials
-// Version 3.0
+// macOS Apps Step by Step
+// Version 4.0
 //
 // by Sarah Reichelt
 //
@@ -18,7 +18,7 @@ struct SettingsView: View {
         AppearanceView()
       }
     }
-    .frame(width: 300, height: 150)
+    .frame(width: 350, height: 150)
     .navigationTitle("Settings")
   }
 }

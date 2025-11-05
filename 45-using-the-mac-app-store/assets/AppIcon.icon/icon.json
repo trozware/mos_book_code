@@ -1,0 +1,52 @@
+{
+  "fill" : {
+    "automatic-gradient" : "display-p3:0.37500,0.36792,0.82568,1.00000"
+  },
+  "groups" : [
+    {
+      "layers" : [
+        {
+          "fill" : {
+            "automatic-gradient" : "srgb:0.99942,0.98555,0.00000,1.00000"
+          },
+          "image-name" : "driver 2.png",
+          "name" : "driver",
+          "position" : {
+            "scale" : 1,
+            "translation-in-points" : [
+              -143.796875,
+              145.9140625
+            ]
+          }
+        },
+        {
+          "fill" : {
+            "automatic-gradient" : "srgb:0.81119,0.45065,0.00000,1.00000"
+          },
+          "image-name" : "hammer.png",
+          "name" : "hammer",
+          "position" : {
+            "scale" : 1.1,
+            "translation-in-points" : [
+              107.3125,
+              -112.25
+            ]
+          }
+        }
+      ],
+      "shadow" : {
+        "kind" : "layer-color",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : false,
+        "value" : 0.5
+      }
+    }
+  ],
+  "supported-platforms" : {
+    "squares" : [
+      "macOS"
+    ]
+  }
+}

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="24123.1" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="24123.1"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -21,23 +21,23 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
-                                        <menuItem isSeparatorItem="YES" id="akU-Kq-ZoY"/>
-                                        <menuItem title="Start Next Task" id="wnb-Of-moI">
+                                        <menuItem isSeparatorItem="YES" id="a1t-dS-27O"/>
+                                        <menuItem title="Start Next Task" id="xya-0S-Jxs">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="startStopTask:" target="Voe-Tx-rLC" id="NdI-em-YVy"/>
+                                                <action selector="startStopTask:" target="Voe-Tx-rLC" id="Zn7-S9-SAq"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Edit Tasks…" id="4Or-m7-4KQ">
+                                        <menuItem title="Edit Tasks…" id="4lh-Wa-N7r">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="showEditTasksWindow:" target="Voe-Tx-rLC" id="CsF-W2-2k9"/>
+                                                <action selector="showEditTasksWindow:" target="Voe-Tx-rLC" id="3ZF-nM-u7Y"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Launch on Login" id="sRa-jx-zY4">
+                                        <menuItem title="Launch on Login" id="7MC-KS-TQ4">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="toggleLaunchOnLogin:" target="Voe-Tx-rLC" id="2NM-cZ-aoz"/>
+                                                <action selector="toggleLaunchOnLogin:" target="Voe-Tx-rLC" id="5rr-W5-45k"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
@@ -58,15 +58,15 @@
                 </application>
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Time_ato" customModuleProvider="target">
                     <connections>
-                        <outlet property="launchOnLoginMenuItem" destination="sRa-jx-zY4" id="F9w-hu-BqI"/>
-                        <outlet property="startStopMenuItem" destination="wnb-Of-moI" id="Jak-Ut-AeY"/>
-                        <outlet property="statusMenu" destination="uQy-DD-JDr" id="Y5j-wG-G7E"/>
+                        <outlet property="launchOnLoginMenuItem" destination="7MC-KS-TQ4" id="PO4-bl-cLn"/>
+                        <outlet property="startStopMenuItem" destination="xya-0S-Jxs" id="NQU-UP-DD3"/>
+                        <outlet property="statusMenu" destination="uQy-DD-JDr" id="xFc-Xv-pK2"/>
                     </connections>
                 </customObject>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="0.0"/>
+            <point key="canvasLocation" x="43" y="-3"/>
         </scene>
     </scenes>
 </document>

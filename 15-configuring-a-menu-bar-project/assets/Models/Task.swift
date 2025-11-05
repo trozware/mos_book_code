@@ -1,7 +1,7 @@
 //
 // Task.swift
-// macOS by Tutorials
-// Version 3.0
+// macOS Apps Step by Step
+// Version 4.0
 //
 // by Sarah Reichelt
 //
@@ -16,17 +16,17 @@ struct Task: Identifiable, Codable {
 
   var progressPercent: Double {
     switch status {
-      case .notStarted:
-        return 0
-      case .inProgress:
-        if let startTime {
-          let elapsedTime = -startTime.timeIntervalSinceNow
-          let percentTime = elapsedTime / TaskTimes.taskTime
-          return percentTime * 100
-        }
-        return 0
-      case .complete:
-        return 100
+    case .notStarted:
+      return 0
+    case .inProgress:
+      if let startTime {
+        let elapsedTime = -startTime.timeIntervalSinceNow
+        let percentTime = elapsedTime / TaskTimes.taskTime
+        return percentTime * 100
+      }
+      return 0
+    case .complete:
+      return 100
     }
   }
 
@@ -54,7 +54,7 @@ extension Task {
     Task(id: UUID(), title: "Project ABC - Ticket 42c"),
     Task(id: UUID(), title: "Testing"),
     Task(id: UUID(), title: "Documentation"),
-    Task(id: UUID(), title: "Project ABC - Ticket 123")
+    Task(id: UUID(), title: "Project ABC - Ticket 123"),
   ]
 
   static var sampleTasksWithStatus: [Task] = [
@@ -80,6 +80,6 @@ extension Task {
     Task(id: UUID(), title: "Project ABC - Ticket 42c"),
     Task(id: UUID(), title: "Testing"),
     Task(id: UUID(), title: "Documentation"),
-    Task(id: UUID(), title: "Project ABC - Ticket 123")
+    Task(id: UUID(), title: "Project ABC - Ticket 123"),
   ]
 }

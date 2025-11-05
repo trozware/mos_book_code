@@ -1,7 +1,7 @@
 //
 // AppState.swift
-// macOS by Tutorials
-// Version 3.0
+// macOS Apps Step by Step
+// Version 4.0
 //
 // by Sarah Reichelt
 //
@@ -42,12 +42,12 @@ import Observation
     if let day = days[requestedDate] {
       let events: [Event]
       switch eventType {
-        case .births:
-          events = day.births
-        case .deaths:
-          events = day.deaths
-        case .events, .none:
-          events = day.events
+      case .births:
+        events = day.births
+      case .deaths:
+        events = day.deaths
+      case .events, .none:
+        events = day.events
       }
 
       if searchText.isEmpty {
@@ -55,7 +55,7 @@ import Observation
       } else {
         let filteredEntries = events.filter { event in
           event.text.localizedStandardContains(searchText)
-          || event.year.localizedStandardContains(searchText)
+            || event.year.localizedStandardContains(searchText)
         }
         return filteredEntries
       }
@@ -204,6 +204,6 @@ import Observation
     "September",
     "October",
     "November",
-    "December"
+    "December",
   ]
 }

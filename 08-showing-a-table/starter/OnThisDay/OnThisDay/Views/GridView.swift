@@ -1,7 +1,7 @@
 //
 // GridView.swift
-// macOS by Tutorials
-// Version 3.0
+// macOS Apps Step by Step
+// Version 4.0
 //
 // by Sarah Reichelt
 //
@@ -31,6 +31,7 @@ struct GridView: View {
       }
       .padding(.vertical)
     }
+    .frame(maxWidth: .infinity, maxHeight: .infinity)
   }
 }
 

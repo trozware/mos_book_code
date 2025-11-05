@@ -1,12 +1,12 @@
 //
 // String_decoded.swift
-// macOS by Tutorials
-// Version 3.0
+// macOS Apps Step by Step
+// Version 4.0
 //
 // by Sarah Reichelt
 //
 
-import Foundation
+import AppKit
 
 extension String {
   // String extension to decode HTML entities
@@ -15,7 +15,7 @@ extension String {
       data: Data(utf8),
       options: [
         .documentType: NSAttributedString.DocumentType.html,
-        .characterEncoding: String.Encoding.utf8.rawValue
+        .characterEncoding: String.Encoding.utf8.rawValue,
       ],
       documentAttributes: nil)
 

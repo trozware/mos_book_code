@@ -1,7 +1,7 @@
 //
 // Toolbar.swift
-// macOS by Tutorials
-// Version 3.0
+// macOS Apps Step by Step
+// Version 4.0
 //
 // by Sarah Reichelt
 //
@@ -19,7 +19,7 @@ struct Toolbar: CustomizableToolbarContent {
       showsByDefault: true
     ) {
       Toggle(isOn: $showTotals) {
-        Label("Show Totals", systemImage: "number.circle")
+        Label("Show Totals", systemImage: "number")
       }
       .help("Toggle showing totals.")
     }

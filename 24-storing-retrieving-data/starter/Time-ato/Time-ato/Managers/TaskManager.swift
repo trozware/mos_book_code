@@ -1,7 +1,7 @@
 //
 // TaskManager.swift
-// macOS by Tutorials
-// Version 3.0
+// macOS Apps Step by Step
+// Version 4.0
 //
 // by Sarah Reichelt
 //
@@ -13,6 +13,7 @@ class TaskManager {
   var tasks: [Task] = Task.sampleTasks
   var timerCancellable: AnyCancellable?
   var timerState = TimerState.waiting
+
   let interaction = Alerter()
   // let interaction = Notifier()
 
@@ -85,12 +86,14 @@ class TaskManager {
       appDelegate.updateMenu(
         title: title,
         icon: icon,
-        taskIsRunning: taskIsRunning)
+        taskIsRunning: taskIsRunning
+      )
     }
   }
 
   func checkForTaskFinish(activeTaskIndex: Int) {
     let activeTask = tasks[activeTaskIndex]
+
     if activeTask.progressPercent >= 100 {
       if activeTaskIndex == tasks.count - 1 {
         interaction.allTasksComplete()
