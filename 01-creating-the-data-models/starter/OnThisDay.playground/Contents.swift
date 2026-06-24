@@ -1,27 +1,12 @@
 //
 // OnThisDay.playground
 // macOS Apps Step by Step
-// Version 4.0
+// Version 4.1
 //
 // by Sarah Reichelt
 //
 
 import Cocoa
-
-extension String {
-  // String extension to decode HTML entities
-  var decoded: String {
-    let attr = try? NSAttributedString(
-      data: Data(utf8),
-      options: [
-        .documentType: NSAttributedString.DocumentType.html,
-        .characterEncoding: String.Encoding.utf8.rawValue,
-      ],
-      documentAttributes: nil)
-
-    return attr?.string ?? self
-  }
-}
 
 enum FetchError: Error {
   case badURL
@@ -35,7 +20,7 @@ func getDataForDay(month: Int, day: Int) async throws {
     throw FetchError.badURL
   }
   let request = URLRequest(url: url)
-
+  
   let (data, response) = try await URLSession.shared.data(for: request)
   guard
     let response = response as? HTTPURLResponse,
@@ -43,7 +28,7 @@ func getDataForDay(month: Int, day: Int) async throws {
   else {
     throw FetchError.badResponse
   }
-
+  
   if let jsonString = String(data: data, encoding: .utf8) {
     saveSampleData(json: jsonString)
   }

@@ -1,7 +1,7 @@
 //
 // Networker.swift
 // macOS Apps Step by Step
-// Version 4.0
+// Version 4.1
 //
 // by Sarah Reichelt
 //
@@ -21,7 +21,7 @@ enum Networker {
       throw FetchError.badURL
     }
     let request = URLRequest(url: url)
-
+    
     let (data, response) = try await URLSession.shared.data(for: request)
     guard
       let response = response as? HTTPURLResponse,
@@ -29,13 +29,13 @@ enum Networker {
     else {
       throw FetchError.badResponse
     }
-
+    
     do {
       let day = try JSONDecoder().decode(Day.self, from: data)
       return day
     } catch {
       print(error)
-
+      
       // some dates return badly formatted JSON
       do {
         let jsonString = String(decoding: data, as: UTF8.self)
@@ -46,7 +46,7 @@ enum Networker {
       } catch {
         print(error)
       }
-
+      
       throw FetchError.badJSON
     }
   }

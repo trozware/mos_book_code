@@ -1,7 +1,7 @@
 //
 // OnThisDay.playground
 // macOS Apps Step by Step
-// Version 4.0
+// Version 4.1
 //
 // by Sarah Reichelt
 //
@@ -9,8 +9,8 @@
 import Cocoa
 
 let appState = AppState()
-let monthNum = 8
-let dayNum = 22
+let monthNum = 2
+let dayNum = 29
 
 @MainActor func testData() {
   if let day = appState.getDataFor(month: monthNum, day: dayNum) {
@@ -18,21 +18,6 @@ let dayNum = 22
     print("\(day.deaths.count) deaths")
   } else {
     print("No data available for that month & day.")
-  }
-}
-
-extension String {
-  // String extension to decode HTML entities
-  var decoded: String {
-    let attr = try? NSAttributedString(
-      data: Data(utf8),
-      options: [
-        .documentType: NSAttributedString.DocumentType.html,
-        .characterEncoding: String.Encoding.utf8.rawValue,
-      ],
-      documentAttributes: nil)
-
-    return attr?.string ?? self
   }
 }
 
@@ -48,7 +33,7 @@ func getDataForDay(month: Int, day: Int) async throws -> Day {
     throw FetchError.badURL
   }
   let request = URLRequest(url: url)
-
+  
   let (data, response) = try await URLSession.shared.data(for: request)
   guard
     let response = response as? HTTPURLResponse,
@@ -56,11 +41,11 @@ func getDataForDay(month: Int, day: Int) async throws -> Day {
   else {
     throw FetchError.badResponse
   }
-
+  
   if let jsonString = String(data: data, encoding: .utf8) {
     saveSampleData(json: jsonString)
   }
-
+  
   do {
     let day = try JSONDecoder().decode(Day.self, from: data)
     return day
@@ -100,11 +85,11 @@ Task {
 struct Day: Decodable {
   let date: String
   let data: [String: [Event]]
-
+  
   var events: [Event] { data[EventType.events.rawValue] ?? [] }
   var births: [Event] { data[EventType.births.rawValue] ?? [] }
   var deaths: [Event] { data[EventType.deaths.rawValue] ?? [] }
-
+  
   var displayDate: String {
     date.replacingOccurrences(of: "_", with: " ")
   }
@@ -115,48 +100,40 @@ struct Event: Decodable, Identifiable {
   let text: String
   let links: [EventLink]
   let year: String
-
-  enum CodingKeys: String, CodingKey {
+  
+  enum CodingKeys: CodingKey {
     case text
     case links
   }
-
-  init(from decoder: Decoder) throws {
-    let values = try decoder.container(keyedBy: CodingKeys.self)
-    let rawText = try values.decode(String.self, forKey: .text)
-    let textParts = rawText.components(separatedBy: " &#8211; ")
+  
+  init(from decoder: any Decoder) throws {
+    let container = try decoder.container(keyedBy: CodingKeys.self)
+    
+    let rawText = try container.decode(String.self, forKey: .text)
+    let textParts = rawText.components(separatedBy: " – ")
     if textParts.count == 2 {
       year = textParts[0]
-      text = textParts[1].decoded
+      text = textParts[1]
     } else {
       year = "?"
-      text = rawText.decoded
+      text = rawText
     }
-
-    let allLinks = try values.decode(
-      [String: [String: String]].self,
-      forKey: .links
-    )
-
-    var processedLinks: [EventLink] = []
-    for (_, link) in allLinks {
-      if let title = link["2"],
-        let address = link["1"],
-        let url = URL(string: address)
-      {
-        processedLinks.append(
-          EventLink(id: UUID(), title: title, url: url)
-        )
+    
+    self.links =
+    try container
+      .decode([EventLink].self, forKey: .links)
+      .filter { link in
+        link.url.scheme != nil
       }
-    }
-    links = processedLinks
   }
 }
 
 struct EventLink: Decodable, Identifiable {
-  let id: UUID
-  let title: String
+  let text: String
   let url: URL
+  var id: URL {
+    self.url
+  }
 }
 
 enum EventType: String {
@@ -167,7 +144,7 @@ enum EventType: String {
 
 @Observable class AppState {
   var days: [String: Day] = [:]
-
+  
   func getDataFor(month: Int, day: Int) -> Day? {
     let monthName = Calendar.current.monthSymbols[month - 1]
     let dateString = "\(monthName) \(day)"

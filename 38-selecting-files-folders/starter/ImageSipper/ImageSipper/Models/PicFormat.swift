@@ -1,7 +1,7 @@
 //
 // PicFormat.swift
 // macOS Apps Step by Step
-// Version 4.0
+// Version 4.1
 //
 // by Sarah Reichelt
 //

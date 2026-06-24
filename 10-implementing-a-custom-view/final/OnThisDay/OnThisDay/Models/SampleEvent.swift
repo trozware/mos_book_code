@@ -1,7 +1,7 @@
 //
 // SampleEvent.swift
 // macOS Apps Step by Step
-// Version 4.0
+// Version 4.1
 //
 // by Sarah Reichelt
 //
@@ -13,24 +13,28 @@ extension Event {
     let json =
       """
       {
-        "links": {
-          "0": {
-            "1": "https://wikipedia.org/wiki/48_BC",
-            "2": "48 BC"
+        "text": "48 BC – Pompey disembarks at Pelusium upon arriving in Egypt, whereupon he is assassinated by order of King Ptolemy XIII.",
+        "links": [
+          {
+              "text": "48 BC",
+              "url": "https://wikipedia.org/wiki/48_BC"
           },
-          "1": {
-            "1": "https://wikipedia.org/wiki/Pompey",
-            "2": "Pompey"
+          {
+              "text": "Pompey",
+              "url": "https://wikipedia.org/wiki/Pompey"
           },
-          "2": {
-            "1": "https://wikipedia.org/wiki/Ptolemy_XIII_Theos_Philopator",
-            "2": "Ptolemy XIII"
+          {
+              "text": "Ptolemy XIII",
+              "url": "https://wikipedia.org/wiki/Ptolemy_XIII_Theos_Philopator"
+          },
+          {
+              "text": "[1]",
+              "url": "#cite_note-Vagi2000-1"
           }
-        },
-        "text": "0048 BC &#8211; Pompey disembarks at Pelusium upon arriving in Egypt, whereupon he is assassinated by order of King Ptolemy XIII."
+        ]
       }
       """
-
+    
     let event = try! JSONDecoder().decode(Event.self, from: Data(json.utf8))
     return event
   }

@@ -1,7 +1,7 @@
 //
 // TableView.swift
 // macOS Apps Step by Step
-// Version 4.0
+// Version 4.1
 //
 // by Sarah Reichelt
 //
@@ -10,26 +10,26 @@ import SwiftUI
 
 struct TableView: View {
   let tableData: [Event]
-
+  
   @State private var sortOrder = [KeyPathComparator(\Event.year)]
   @State private var selectedEventID: Event.ID?
   @State private var showInspector = false
-
+  
   var sortedTableData: [Event] {
     return tableData.sorted(using: sortOrder)
   }
-
+  
   var selectedEvent: Event? {
     guard let selectedEventID else {
       return nil
     }
-
+    
     let event = tableData.first {
       $0.id == selectedEventID
     }
     return event
   }
-
+  
   var body: some View {
     Table(
       sortedTableData,
@@ -40,7 +40,7 @@ struct TableView: View {
         Text($0.year)
       }
       .width(min: 50, ideal: 60, max: 100)
-
+      
       TableColumn("Title", value: \.text)
     }
     .inspector(isPresented: $showInspector) {

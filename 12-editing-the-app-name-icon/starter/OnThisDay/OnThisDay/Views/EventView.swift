@@ -1,7 +1,7 @@
 //
 // EventView.swift
 // macOS Apps Step by Step
-// Version 4.0
+// Version 4.1
 //
 // by Sarah Reichelt
 //
@@ -25,7 +25,7 @@ struct EventView: View {
             .font(.title2)
 
           ForEach(event.links) { link in
-            Link(link.title, destination: link.url)
+            Link(link.text, destination: link.url)
               .onHover { inside in
                 if inside {
                   NSCursor.pointingHand.push()

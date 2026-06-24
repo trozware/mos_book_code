@@ -1,7 +1,7 @@
 //
 // EventLink.swift
 // macOS Apps Step by Step
-// Version 4.0
+// Version 4.1
 //
 // by Sarah Reichelt
 //
@@ -9,7 +9,9 @@
 import Foundation
 
 struct EventLink: Decodable, Identifiable {
-  let id: UUID
-  let title: String
+  let text: String
   let url: URL
+  var id: URL {
+    self.url
+  }
 }
